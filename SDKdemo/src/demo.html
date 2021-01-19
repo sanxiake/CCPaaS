@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./dist/ctibar-1.1.4.min.js"></script>
+    <script src="./js/statusListener.js"></script>
+    <link rel="stylesheet" href="./static/css/usails.css">
+    <link rel="stylesheet" href="./static/layui/css/layui.css">
+    <script src="./static/layui/layui.js"></script>
+    <script src="./static/js/jquery-1.10.2.min.js"></script>
+    <script>
+        var stateEventListener = {
+            handle: (event, data) => {
+              console.log("event: " + event + "\n" + "data: " + data);
+                if (event === 'LOGIN') {
+                    statusListener.login();
+                    console.log('extno is :' + data.extno)
+                } if (event === 'LOGOUT') {
+                    statusListener.logout();
+                    console.log('extno is :' + data.extno)
+                }else if (event === 'READY') {
+                    statusListener.ready();
+                }else if (event === 'NOTREADY') {
+                    statusListener.notready();
+                } else if (event === 'AFTERPROCESS') {
+                    statusListener.afterprocess(data);
+                } else if (event === 'REST') {
+                    statusListener.rest();
+                } else if (event === 'RING') {
+                    console.log('ring dir ' + data.direction)
+                    if (data.direction === 'out') {
+                        console.log("all out state!!!!!!!")
+                        statusListener.callOut();
+                    } else {
+                        console.log("call in state!!!!!!")
+                        statusListener.callIn();
+                    }
+                } else if (event === 'ANSWER') {
+                    statusListener.accepted();
+                } else if (event === 'HANGUP') {
+                    statusListener.hungup();
+                } else if (event === 'HOLD') {
+                    statusListener.hold();
+                } else if (event === 'UNHOLD') {
+                    statusListener.ready();
+                } else if (event === 'MUTE') {
+                    //FIXME:
+                } else if (event === 'UNMUTE') {
+                    //FIXME:
+                } else if (event === 'ERROR') {
+
+                }
+            }
+        };
+        var stateEventListener = {
+            handle: (event, data) => {
+              console.log("event: " + event + "\n" + "data: " + data);
+                if (event === 'LOGIN') {
+                    statusListener.login();
+                    console.log('extno is :' + data.extno)
+                } if (event === 'LOGOUT') {
+                    statusListener.logout();
+                    console.log('extno is :' + data.extno)
+                }else if (event === 'READY') {
+                    statusListener.ready();
+                }else if (event === 'NOTREADY') {
+                    statusListener.notready();
+                } else if (event === 'AFTERPROCESS') {
+                    statusListener.afterprocess(data);
+                } else if (event === 'REST') {
+                    statusListener.rest();
+                } else if (event === 'RING') {
+                    console.log('ring dir ' + data.direction)
+                    if (data.direction === 'out') {
+                        console.log("all out state!!!!!!!")
+                        statusListener.callOut();
+                    } else {
+                        console.log("call in state!!!!!!")
+                        statusListener.callIn();
+                    }
+                } else if (event === 'ANSWER') {
+                    statusListener.accepted();
+                } else if (event === 'HANGUP') {
+                    statusListener.hungup();
+                } else if (event === 'HOLD') {
+                    statusListener.hold();
+                } else if (event === 'UNHOLD') {
+                    statusListener.ready();
+                } else if (event === 'MUTE') {
+                    //FIXME:
+                } else if (event === 'UNMUTE') {
+                    //FIXME:
+                } else if (event === 'ERROR') {
+
+                }
+            }
+        };
+
+         $(document).ready(function () {
+            $(document).on("click", '[data-toggle="soft-function"]', function (e) {
+                if ($(this).closest(".disabled").length == 0) {
+                    var name = $(this).data("action");
+                    console.log("name:"+name);
+                    if (name == "login") {
+                        var configuration = {
+                        baseUrl: 'https://cc.bjrzgt.tech',
+                            username: 'qwh001',
+                            token: 'a633fb8734bd0449ebee41147b69e220',
+                            stateEventListener,
+                        };
+                        window.Ctibar.init(configuration, function () {
+                            console.log('init success.');
+                        }, function () {
+                            console.log('init failed.');
+                        });
+                    } else if (name == "logout") {
+                        Ctibar.logout();
+                    }else if (name == "ready") {
+                        Ctibar.ready();
+                    } else if (name == "notready") {
+                        Ctibar.notready();
+                    } else if (name == "cancelafterprocess") {
+                        Ctibar.cancleafterprocess();
+                    } else if (name == "answer") {
+                        Ctibar.answer();
+                        /**
+                         * 做了响应
+                         */
+                        resp = true;
+                    } else if (name == "hungup") {
+                        Ctibar.hungup();
+                    } else if (name == "hold") {
+                        Ctibar.hold();
+                    } else if (name == "unhold") {
+                        Ctibar.unhold();
+                    } else if (name == "contacts") {
+                        Ctibar.contacts();
+                    } else if (name == "conference") {
+                        Ctibar.openconference();
+                    } else if (name == "trans") {
+                        Ctibar.trans();
+                    } else if (name == "mute") {
+                        Ctibar.mute();
+                    }else if (name == "unmute") {
+                        Ctibar.unmute();
+                    }
+                }
+            });
+            $(document).on("click", '#dialpad .number', function (e) {
+                var tons = $(this).attr("id");
+                window.Ctibar.dtmf(tons);
+
+            });
+           var ondial = false;
+            $('#softphone-makecall').click(function () {
+                var pos = $(this).offset();
+                if ($(this).closest(".disabled").length == 0) {
+                    current = "makecall";
+                    $('#dialpad').css("top", pos.top + 45 + "px").css("left", pos.left + "px");
+                    $('#dialpad').show();
+                    $("#dialpad-input").focus();
+                }
+            });
+            $('#softphone-trans').click(function () {
+                var pos = $(this).offset();
+                if ($(this).closest(".disabled").length == 0) {
+                    current = "trans";
+                    $('#dialpad').css("top", pos.top + 45 + "px").css("left", pos.left + "px");
+                    $('#dialpad').show();
+                    $("#dialpad-input").focus();
+                }
+            });
+            $('#usails-dial-del').click(function () {
+                var value = $("#dialpad-input").val();
+                if (value != "" && value.length > 0) {
+                    $("#dialpad-input").val(value.substring(0, value.length - 1));
+                }
+            });
+            $('#dialpad .number').on("mousedown", function (e) {
+                $(this).css("background-color", "#1E90FF");
+            }).on("mouseup", function (e) {
+                $(this).css("background-color", "#FFFFFF");
+            }).on("click", function (e) {
+                $("#dialpad-input").val($("#dialpad-input").val() + $(this).attr("id"));
+            });
+            $("#makecall").on("click", function () {
+                if (current == "makecall") {
+                    Ctibar.invite($('#dialpad-input').val());
+                } else if (current == "trans") {
+                    Ctibar.trans($('#dialpad-input').val());
+                }
+                $('#dialpad-input').val("");
+                $('#dialpad').hide();
+            });
+            $('#dialpad').hover(function () {
+                ondial = true;
+            }, function () {
+                ondial = false;
+                setTimeout(function () {
+                    if (ondial == false) {
+                        $('#dialpad').hide();
+                    }
+                }, 1000);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="usails-softphone" id="usails-softphone">
+    <div class="softphone-stream" style="display:none;">
+        <audio id="remoteAudio"></audio>
+        <audio id="localAudio" muted="muted"></audio>
+    </div>
+    <div class="status disabled" style="padding:3px 0 0 0px;color:#ffffff;width: 180px;overflow: hidden;">
+        <div id="usails_agent_status_no" style="padding:15px 0 0 0px;">
+            <i class="layui-icon">&#xe617;</i>
+            分机未登录，连接失败
+        </div>
+        <div id="usails_agent_status_offline" style="padding:15px 0 0 0px;display:none;">
+            <i class="layui-icon">&#xe617;</i>
+            语音服务已断开
+        </div>
+        <div id="usails_agent_status_ok" style="padding:15px 0 0 0px;display:none;color:#ffffff;">
+            <i class="layui-icon">&#xe617;</i>
+            分机：<span class="number"></span> 登录成功
+        </div>
+        <div id="usails_hangup" style="display:none;color:#c60000;">
+            <i class="kfont">&#xe67e;</i>
+            已挂断：<span class="number"></span>
+        </div>
+        <div id="usails_agent_docallout" style="padding:15px 0 0 0px;display:none;color:#ffffff;">
+            <i class="layui-icon">&#xe617;</i>
+            分机：<span class="number"></span> <span id="waittingmsg">等待名单</span>
+        </div>
+        <div id="usails_agent_status_call" style="display:none;color:#ffffff;">
+            <div class="text" id="caller">主叫号码：<span class="number"></span></div>
+            <div class="text" id="called">被叫号码：<span class="number"></span></div>
+        </div>
+        <div id="usails_agent_timer_call" style="display:none;">
+            <div class="text" id="discall">号码：<span class="number"></span></div>
+            <div class="text">时长：<span class="timer">00:00:00</span></div>
+        </div>
+    </div>
+
+    <div class="soft-function disabled" id="softphone-status">
+        <div class="soft-function ready" style="display:none;" data-toggle="soft-function" data-action="notready">
+            <div class="icon"><i class="kfont">&#xe624;</i></div>
+            <div class="text">就绪</div>
+        </div>
+        <div class="soft-function notready" data-toggle="soft-function" data-action="ready">
+            <div class="icon"><i class="kfont">&#xe689;</i></div>
+            <div class="text">未就绪</div>
+        </div>
+    </div>
+
+
+    <!--        <div class="soft-function disabled" id="softphone-mute">-->
+    <!--            <div class="soft-function mute" data-toggle="soft-function" data-action="mute">-->
+    <!--                <div class="icon"><i class="kfont">&#xe624;</i></div>-->
+    <!--                <div class="text">静音</div>-->
+    <!--            </div>-->
+    <!--            <div class="soft-function unmute" style="display:none" data-toggle="soft-function" data-action="unmute">-->
+    <!--                <div class="icon"><i class="kfont">&#xe689;</i></div>-->
+    <!--                <div class="text">取消静音</div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <div class="soft-function disabled" id="softphone-answer" data-toggle="soft-function" data-action="answer">
+        <div class="icon"><i class="kfont">&#xe698;</i></div>
+        <div class="text">接听</div>
+    </div>
+    <div class="soft-function disabled" id="softphone-hungup" data-toggle="soft-function" data-action="hungup">
+        <div class="icon"><i class="kfont">&#xe60e;</i></div>
+        <div class="text">挂断</div>
+    </div>
+    <div class="soft-function disabled" id="softphone-afterprocess" data-toggle="soft-function"
+         data-action="cancelafterprocess">
+        <div class="icon"><i class="kfont">&#xe6b0;</i></div>
+        <div class="text">后处理</div>
+    </div>
+    <div class="soft-function disabled" id="softphone-rest" data-toggle="soft-function" data-action="rest">
+        <div class="icon"><i class="kfont">&#xe624;</i></div>
+        <div class="text">空闲</div>
+    </div>
+    <div class="soft-function disabled" style="display:none;" id="softphone-free" data-toggle="soft-function"
+         data-action="free">
+        <div class="icon"><i class="kfont">&#xe682;</i></div>
+        <div class="text">示忙</div>
+    </div>
+    <div class="soft-function disabled diafunction" id="softphone-makecall">
+        <div class="icon"><i class="kfont">&#xe670;</i></div>
+        <div class="text">拨打</div>
+    </div>
+    <div class="soft-function disabled" id="softphone-status">
+        <div class="soft-function hold" data-toggle="soft-function" data-action="hold">
+            <div class="icon"><i class="kfont">&#xe647;</i></div>
+            <div class="text">保持</div>
+        </div>
+        <div class="soft-function unhold" data-toggle="soft-function" data-action="unhold" style="display:none;">
+            <div class="icon"><i class="kfont">&#xe605;</i></div>
+            <div class="text">取回</div>
+        </div>
+    </div>
+
+    <div class="soft-function disabled" id="softphone-trans">
+        <div class="icon"><i class="kfont">&#xe663;</i></div>
+        <div class="text">转接</div>
+    </div>
+
+    <div class="soft-function" id="usails_account">
+        <div class="soft-function login" data-toggle="soft-function" data-action="login">
+            <div class="icon"><i class="kfont">&#xe61f;</i></div>
+            <div class="text">登录</div>
+        </div>
+        <div class="soft-function logout" style="display:none;" data-toggle="soft-function" data-action="logout">
+            <div class="icon"><i class="kfont">&#xe611;</i></div>
+            <div class="text">登出</div>
+        </div>
+    </div>
+
+    <script id="usails-login-html" type="text/html">
+        <div class="usails-login-title">请输入登录信息</div>
+        <div class="usails-login-info">
+            <div class="usails-login-extno">分机号：</div>
+            <div class="usails-login-block">
+                <input class="usails-login-input" type="text" id="extno" value="">
+            </div>
+        </div>
+        <div class="usails-login-info">
+            <div class="usails-login-password">密码：</div>
+            <div class="usails-login-block">
+                <input class="usails-login-input" type="password" id="extpass" type="text" value="">
+            </div>
+        </div>
+    </script>
+
+    <div class="dialpad" id="dialpad">
+        <div class="dialnum">
+            <input class="dialpad-input" type="text" id="dialpad-input" value="">
+            <i class="kfont usails-dial-del" id="usails-dial-del">&#xe675;</i>
+        </div>
+        <button class="number" id="1">1</button>
+        <button class="number" id="2">2</button>
+        <button class="number" id="3">3</button>
+        <button class="number" id="4">4</button>
+        <button class="number" id="5">5</button>
+        <button class="number" id="6">6</button>
+        <button class="number" id="7">7</button>
+        <button class="number" id="8">8</button>
+        <button class="number" id="9">9</button>
+        <button class="number" id="*">*</button>
+        <button class="number" id="0">0</button>
+        <button class="number" id="#">#</button>
+
+        <button id="makecall" class="call"><i class="kfont">&#xe61f;</i></button>
+    </div>
+</div>
+</body>
+</html>

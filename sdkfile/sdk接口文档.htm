@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>ccpaas-sdk-test_项目接口文档</title>
+    <!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="keywords" content="接口文档,ApiPost">
+    <meta name="description" content="本文档由可直接生成文档的API调试、管理工具ApiPost生成">
+    <meta name="author" content="https://www.apipost.cn/">
+<!--    <link rel="stylesheet" type="text/css" href="https://img.cdn.apipost.cn/statics/bootstrap.css">-->
+    <link rel="stylesheet" href="https://docs.apipost.cn/statics/css/editor-preview.css">
+    <link rel="stylesheet" href="https://docs.apipost.cn/statics/highlight/github.min.css">
+    <link rel="stylesheet" type="text/css" href="https://docs.apipost.cn/statics/css/style.css?v=0603" />
+    <link rel="stylesheet" type="text/css" href="https://img.cdn.apipost.cn/statics/build-in/font-awesome/css/font-awesome.min.css" />
+    <link rel="shortcut icon" href="https://docs.apipost.cn/statics/images/favicon.ico" />
+</head>
+<body>
+
+<!--顶部导航-->
+<div class="page-title-fixed">
+    <div class="apt-container">
+        <h1 class="logo">
+            <a href="https://docs.apipost.cn/view/b61e6c555fab8166">
+                <span class="logo-name">ccpaas-sdk-test</span>
+            </a>
+        </h1>
+        <ul class="page-menus">
+            <li>
+                <span class="a-doc-btn" href="javascript:;" data-target_id="-1">
+                    环境变量说明
+                    <div class="apt-envs-desc">
+                        <script type="text" id="template-apt-envs-desc-tpl">
+                        {{if list && list.length > 0}}
+                        {{each list item i}}
+                        <h4>{{item.name}}</h4>
+                        <table cellpadding="0" cellspacing="0">
+                            <tr>
+                                <th>变量</th><th>变量值</th>
+                            </tr>
+                            {{each item.list val key}}
+                            <tr>
+                                <td>{{key}}</td><td>{{val.value}}</td>
+                            </tr>
+                            {{/each}}
+                        </table>
+                        {{/each}}
+                        {{else}}
+                        <p class="apt-none">哎呀，开发小哥哥还没用到变量</p>
+                        {{/if}}
+                        </script>
+                    </div>
+                </span>
+            </li>
+            <li>
+                <a href="https://docs.apipost.cn/view/b61e6c555fab8166" class="active">使用文档</a>
+            </li>
+            <li>
+                <a href="javascript:;">导出离线</a>
+                <ul class="page-menus-btns">
+                    <li><a target="_blank" href="https://docs.apipost.cn/html/b61e6c555fab8166" class="page-export-btn" data-target="html">导出HTML</a></li>
+                    <li><a target="_blank" href="https://docs.apipost.cn/markdown/b61e6c555fab8166" class="page-export-btn" data-target="markdown">导出MarkDown</a></li>
+                    <li><a target="_blank" href="https://docs.apipost.cn/word/b61e6c555fab8166" class="page-export-btn" data-target="markdown">导出Word文档 <span style="color: red; font-size:10px;margin-left: 18px">new ~</span> </a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--内容-->
+<div class="wrapper">
+    <div class="apt-container">
+        <div class="sidebar-wrapper fixed">
+            <div class="apt-search-div">
+                <input type="search" name="apt_kw" autocorrect="off" autocapitalize="off" autocomplete="new-password" data-toggle="dropdown" placeholder="支持接口名称/拼音/URL搜索" class="apt-search-input-txt">
+                <ul class="apt-search-div-dropdown apt-search-result">
+                    <script type="text" id="template-apt-search-result-tpl">
+                    {{if list && list.length > 0}}
+                    {{each list item i}}
+                    <li>
+                        <a class="a-target-btn" data-target_id="{{item.target_id}}" href="javascript:;">
+                            <h4><small class="{{item.method}}">{{item.method}}</small> {{item.name}}</h4>
+                            <div class="apt-url-text">{{item.url}}</div>
+                        </a>
+                    </li>
+                    {{/each}}
+                    {{/if}}
+                    </script>
+                </ul>
+            </div>
+            <div class="sidebar apt-left-menu">
+                <script type="text" id="template-apt-left-menu-tpl">
+                {{if menu && menu.length > 0}}
+                <ul class="menu-group">
+                    {{each menu item i}}
+                    <li class="menu-item active">
+                        {{if item.target_type == 'folder'}}
+                        <a class="a-folder-btn sub-title"  data-{{item.target_type}}_id="{{item.target_id}}" href="javascript:;"><i class="fa fa-folder-o" aria-hidden="true"></i> {{item.name}}</a>
+                        {{if item.menu.length > 0}}
+                        <ul class="menu-group">
+                            {{each item.menu item2 i2}}
+                            <li class="menu-item active">
+                                {{if item2.target_type == 'folder'}}
+                                <a class="a-folder-btn sub-title"  data-{{item2.target_type}}_id="{{item2.target_id}}" href="javascript:;"><i class="fa fa-folder-o" aria-hidden="true"></i> {{item2.name}}</a>
+                                {{include 'template-apt-left-menu-tpl' item2}}
+                                {{else}}
+                                <a class="a-target-btn sub-title {{item2.mark}}"  data-target_id="{{item2.target_id}}" href="javascript:;">{{item2.name}}</a>
+                                {{/if}}
+                            </li>
+                            {{/each}}
+                        </ul>
+                        {{/if}}
+                        {{else}}
+                        <a class="a-target-btn sub-title {{item.mark}}"  data-target_id="{{item.target_id}}" href="javascript:;">{{item.name}}</a>
+                        {{/if}}
+                    </li>
+                    {{/each}}
+                </ul>
+                {{/if}}
+                </script>
+            </div>
+        </div>
+
+        <div class="main-container">
+
+            <div class="breadcrumb">
+
+                <div class="breadcrumb-anchor">
+
+                    <div class="anchor-toc">
+                        <div class="dropdown-toc">
+                            <div class="dropdown-trigger">
+                                <span class="toc-current">本页导航</span>
+                                <span class="icon-down"></span>
+                            </div>
+                            <div class="dropdown-body">
+                                <ul>
+                                    <li>
+                                        <a href="javascript:;">基本信息</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">请求参数</a>
+                                    </li>
+                                    <li class="toc-item-2">
+                                        <a href="javascript:;">Query参数</a>
+                                    </li>
+                                    <li class="toc-item-2">
+                                        <a href="javascript:;">Header参数</a>
+                                    </li>
+                                    <li class="toc-item-2">
+                                        <a href="javascript:;">Body参数</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">响应示例</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="markdown apt-target">
+                <script type="text" id="template-apt-target-tpl">
+                <h2>
+                    <em class="{{target.mark}}">[
+                        {{if target.mark == 'modifying'}}
+                        待修改
+                        {{else if target.mark == 'complated'}}
+                        已完成
+                        {{else}}
+                        开发中
+                        {{/if}}]
+                    </em>
+                    {{target.name}}<span class="metadata">更新时间：{{target.update_dtime}}</span>
+                </h2>
+                {{if target.request.description}}
+                <div class="editor-preview">
+                {{@target.request.description}}
+                </div>
+                {{/if}}
+                {{if target.target_type == 'api'}}
+                <h3 class="title"><a href="#mao1" class="maodian" id="mao1"></a> 基本信息</h3>
+                <ul>
+                    <li>
+                        <strong>接口状态：</strong> <span class="{{target.mark}}">
+                        {{if target.mark == 'modifying'}}
+                        待修改
+                        {{else if target.mark == 'complated'}}
+                        已完成
+                        {{else}}
+                        开发中
+                        {{/if}}
+                        </span>
+                    </li>
+                    <li>
+                        <strong>接口URL：</strong> <code class="span">{{target.request.url}}</code>
+                    </li>
+                    <li>
+                        <strong>请求方式：</strong> <code class="span">{{target.method}}</code>
+                    </li>
+                    {{if target.method != 'GET'}}
+                    <li>
+                        <strong>Content-Type：</strong> <code class="span">{{target.request.body.mode_text}}</code>
+                    </li>
+                    {{/if}}
+                </ul>
+                {{if target.request}}
+                <h3 class="title"><a  href="#mao2" class="maodian" id="mao2"></a> 请求参数</h3>
+                <p>接口请求参数见下表：
+                {{if (target.request.query && target.request.query.parameter.length > 0) || global_paras.query.length > 0}}
+                <h4><a  href="#mao3" class="maodian" id="mao3"></a> Query参数说明</h4>
+                <div>
+                    <table>
+
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div><strong>参数名</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>示例值</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>是否必填</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>参数描述</strong></div>
+                            </th>
+                        </tr>
+                        {{if global_paras.query}}
+                        {{each global_paras.query query i}}
+                        {{if query.key != ''}}
+                        <tr class="apt-global_paras">
+                            <td>
+                                <div>[全局参数] {{query.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{query.value}}</div>
+                            </td>
+                            <td>
+                                <div>必填</div>
+                            </td>
+                            <td>
+                                <div><pre>{{query.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        {{/if}}
+
+                        {{each target.request.query.parameter query i}}
+                        {{if query.key != ''}}
+                        <tr>
+                            <td>
+                                <div>{{query.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{query.value}}</div>
+                            </td>
+                            <td>
+                                <div>{{(query.not_null && query.not_null > 0) ?  '必填' : '选填'}}</div>
+                            </td>
+                            <td>
+                                <div><pre>{{query.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{/if}}
+                {{if target.request.resful && target.request.resful.parameter.length > 0}}
+                <h4><a  href="#mao12" class="maodian" id="mao12"></a> 路径参数</h4>
+                <div>
+                    <table>
+
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div><strong>参数名</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>示例值</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>参数描述</strong></div>
+                            </th>
+                        </tr>
+                        {{each target.request.resful.parameter resful i}}
+                        {{if resful.key != ''}}
+                        <tr>
+                            <td>
+                                <div>{{resful.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{resful.value}}</div>
+                            </td>
+                            <td>
+                                <div><pre>{{resful.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{/if}}
+                {{if (target.request.header && target.request.header.parameter.length > 0) || global_paras.header.length > 0}}
+                <h4><a  href="#mao4" class="maodian" id="mao4"></a> Header参数说明</h4>
+                <div>
+                    <table>
+
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div><strong>参数名</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>示例值</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>是否必填</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>参数描述</strong></div>
+                            </th>
+                        </tr>
+                        {{if global_paras.header}}
+                        {{each global_paras.header header i}}
+                        {{if header.key != ''}}
+                        <tr class="apt-global_paras">
+                            <td>
+                                <div>[全局参数] {{header.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{header.value}}</div>
+                            </td>
+                            <td>
+                                <div>必填</div>
+                            </td>
+                            <td>
+                                <div><pre>{{header.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        {{/if}}
+
+                        {{each target.request.header.parameter header i}}
+                        {{if header.key != ''}}
+                        <tr>
+                            <td>
+                                <div>{{header.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{header.value}}</div>
+                            </td>
+                            <td>
+                                <div>{{header.not_null && header.not_null > 0 ?  '必填' : '选填'}}</div>
+                            </td>
+                            <td>
+                                <div><pre>{{header.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{/if}}
+                {{if target.request.body}}
+                {{if target.request.body.mode == 'form-data' || target.request.body.mode == 'urlencoded'}}
+                {{if target.request.body.parameter.length > 0 || global_paras.body.length > 0}}
+                <h4><a  href="#mao5" class="maodian" id="mao5"></a> Body参数说明 ({{target.request.body.mode_text}})</h4>
+                <div>
+                    <table>
+
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div><strong>参数名</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>示例值</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>是否必填</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>参数描述</strong></div>
+                            </th>
+                        </tr>
+                        {{if global_paras.body}}
+                        {{each global_paras.body body i}}
+                        {{if body.key != ''}}
+                        <tr class="apt-global_paras">
+                            <td>
+                                <div>[全局参数] {{body.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{body.value}}</div>
+                            </td>
+                            <td>
+                                <div>必填</div>
+                            </td>
+                            <td>
+                                <div><pre>{{body.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        {{/if}}
+
+                        {{each target.request.body.parameter body i}}
+                        {{if body.key != ''}}
+                        <tr>
+                            <td>
+                                <div>{{body.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{body.value}}</div>
+                            </td>
+                            <td>
+                                <div>{{body.not_null && body.not_null > 0 ? '必填' : '选填'}}</div>
+                            </td>
+                            <td>
+                                <div><pre>{{body.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{/if}}
+                {{else}}
+                {{if target.request.body.raw}}
+                <h4><a  href="#mao5" class="maodian" id="mao5"></a> Body参数 ({{target.request.body.mode_text}})</h4>
+                <div class="editor-preview">
+                <pre><code>{{target.request.body.raw}}</code></pre>
+                </div>
+                {{if target.request.body && target.request.body.raw_para && target.request.body.raw_para.length > 0}}
+                <h4><a  href="#mao10" class="maodian" id="mao10"></a> 参数说明</h4>
+                <div>
+                    <table>
+
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div><strong>参数名</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>示例值</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>是否必填</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>参数描述</strong></div>
+                            </th>
+                        </tr>
+                        {{each target.request.body.raw_para body i}}
+                        {{if body.key != ''}}
+                        <tr>
+                            <td>
+                                <div>{{body.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{body.value}}</div>
+                            </td>
+                            <td>
+                                <div>{{body.not_null && body.not_null > 0 ? '必填' : '选填'}}</div>
+                            </td>
+                            <td>
+                                <div><pre>{{body.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{/if}}
+                {{/if}}
+                {{/if}}
+                {{/if}}
+                {{/if}}
+                {{if target.response}}
+                <h3 class="title"><a  href="#mao6" class="maodian" id="mao6"></a> 响应示例</h3>
+                {{if target.response && target.response.success && target.response.success.raw}}
+                <h4><a  href="#mao7" class="maodian" id="mao7"></a> 正确响应示例</h4>
+                <div class="editor-preview">
+                <pre><code>{{target.response.success.raw}}</code></pre>
+                </div>
+                {{if target.response.success.parameter.length > 0}}
+                <h4><a  href="#mao8" class="maodian" id="mao8"></a> 参数说明</h4>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div><strong>参数名</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>示例值</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>参数描述</strong></div>
+                            </th>
+                        </tr>
+                        {{each target.response.success.parameter item i}}
+                        {{if item.key != ''}}
+                        <tr>
+                            <td>
+                                <div>{{item.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{item.value}}</div>
+                            </td>
+                            <td>
+                                <div><pre>{{item.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{/if}}
+                {{/if}}
+                {{if target.response && target.response.error && target.response.error.raw}}
+                <h4><a  href="#mao8" class="maodian" id="mao8"></a> 错误响应示例</h4>
+                <div class="editor-preview">
+                <pre><code>{{target.response.error.raw}}</code></pre>
+                </div>
+                {{if target.response.error.parameter.length > 0}}
+                <h4><a  href="#mao9" class="maodian" id="mao9"></a> 参数说明</h4>
+                <div>
+                    <table>
+
+                        <tbody>
+                        <tr>
+                            <th>
+                                <div><strong>参数名</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>示例值</strong></div>
+                            </th>
+                            <th>
+                                <div><strong>参数描述</strong></div>
+                            </th>
+                        </tr>
+                        {{each target.response.error.parameter item i}}
+                        {{if item.key != ''}}
+                        <tr>
+                            <td>
+                                <div>{{item.key}}</div>
+                            </td>
+                            <td>
+                                <div>{{item.value}}</div>
+                            </td>
+                            <td>
+                                <div><pre>{{item.description}}</pre></div>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+                {{/if}}
+                {{/if}}
+                {{/if}}
+                {{/if}}
+                <footer>本文档由<a href="https://docs.apipost.cn/" target="_blank">APIPOST接口调试与管理工具</a>生成</footer>
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <!--图片弹窗-->
+    <div class="imgtc">
+        <img src=""/>
+    </div>
+</div>
+
+<!-- 下载自行编辑时，以下代码可去掉 -->
+<!-- <style type="text/css">
+	.apt1111{position: fixed;left: 17px;bottom: 50px;width: 261px;height: 145px;clear: both;z-index: 99999;}
+	.apt1111 img{border-radius: 5px;width: 261px; height: 145px; border: 0; float: left;}
+	.apt1111 em{position: absolute;right: 4px;top: -18px;font-size: 19px;background: #e96900;width: 22px;height: 22px;line-height: 20px;text-align: center;border-radius: 50%;color: #fff;padding-top: -8px;cursor: pointer;display: inline-block;}
+</style>
+<div class="apt1111">
+	<a href="https://www.apipost.cn/1111/?fr=doc" target="_blank" title="ApiPost 双11特惠，开通团队版立减"><img src="https://img.cdn.apipost.cn/statics/apt_1111.gif" /></a>
+	<em class="close-btn">x</em>
+</div> -->
+<!-- 下载自行编辑时，以上代码可去掉 -->
+
+<script src="https://img.cdn.apipost.cn/statics/build-in/jquery/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://docs.apipost.cn/statics/marked/marked.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://docs.apipost.cn/statics/highlight/highlight.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://img.cdn.apipost.cn/cdn/art-template@4.13.2/template-web.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://docs.apipost.cn/statics/apt.min-1.0.0.js?v=0803" type="text/javascript" charset="utf-8"></script>
+<script src="https://img.cdn.apipost.cn/statics/libs/crypto-js/crypto-js.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function() {
+                                let _menu = [{"project_id":"294279","parent_id":"3664748","target_id":"3664789","name":"\u767b\u5f55","method":"POST","mark":"developing","target_type":"folder","url":null,"pinyin":"denglu","menu":[{"project_id":"294279","parent_id":"3664789","target_id":"3664796","name":"\u767b\u5f55","method":"POST","mark":"complated","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/tokens\/apisoftphonelogin","pinyin":"denglu","menu":[]}]},{"project_id":"294279","parent_id":"3664748","target_id":"3664817","name":"\u5750\u5e2d\u72b6\u6001\u5f3a\u5236\u53d8\u66f4","method":"POST","mark":"developing","target_type":"folder","url":null,"pinyin":"zuoxizhuangtaiqiangzhibiangeng","menu":[{"project_id":"294279","parent_id":"3664817","target_id":"3665060","name":"\u5728\u7ebf\u5ba2\u670d\u72b6\u6001\u5207\u6362","method":"POST","mark":"developing","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/status","pinyin":"zaixiankefuzhuangtaiqiehuan","menu":[]}]},{"project_id":"294279","parent_id":"3664748","target_id":"3664837","name":"\u547c\u53eb\u63a5\u53e3api","method":"POST","mark":"developing","target_type":"folder","url":null,"pinyin":"hujiaojiekouapi","menu":[{"project_id":"294279","parent_id":"3664837","target_id":"3664884","name":"\u5916\u547c\u63a5\u53e3","method":"POST","mark":"developing","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/api\/callcenter\/invite","pinyin":"waihujiekou","menu":[]}]},{"project_id":"294279","parent_id":"3664748","target_id":"3664842","name":"\u901a\u8bdd\u8bb0\u5f55api","method":"POST","mark":"developing","target_type":"folder","url":null,"pinyin":"tonghuajiluapi","menu":[{"project_id":"294279","parent_id":"3664842","target_id":"3664899","name":"\u67e5\u8be2\u6307\u5b9a\u547c\u53eb\u8bb0\u5f55","method":"POST","mark":"developing","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/api\/callcenterevent\/goalevent","pinyin":"chaxunzhidinghujiaojilu","menu":[]},{"project_id":"294279","parent_id":"3664842","target_id":"3664909","name":"\u67e5\u8be2\u6307\u5b9a\u65f6\u95f4\u6bb5\u547c\u53eb\u8bb0\u5f55","method":"POST","mark":"developing","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/api\/callcenterevent\/calllist","pinyin":"chaxunzhidingshijianduanhujiaojilu","menu":[]}]},{"project_id":"294279","parent_id":"3664748","target_id":"3664847","name":"\u5750\u5e2d\u72b6\u6001api","method":"POST","mark":"developing","target_type":"folder","url":null,"pinyin":"zuoxizhuangtaiapi","menu":[{"project_id":"294279","parent_id":"3664847","target_id":"3664918","name":"\u83b7\u53d6\u6240\u6709\u5750\u5e2d\u72b6\u6001\u4fe1\u606f","method":"POST","mark":"developing","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/getAllAgentStatus","pinyin":"huoqusuoyouzuoxizhuangtaixinxi","menu":[]},{"project_id":"294279","parent_id":"3664847","target_id":"3664923","name":"\u83b7\u53d6\u6307\u5b9a\u5750\u5e2d\u72b6\u6001\u4fe1\u606f","method":"POST","mark":"developing","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/getagentstatusbyid","pinyin":"huoquzhidingzuoxizhuangtaixinxi","menu":[]}]},{"project_id":"294279","parent_id":"3664748","target_id":"3664855","name":"\u5f53\u524d\u547c\u53eb","method":"POST","mark":"developing","target_type":"folder","url":null,"pinyin":"dangqianhujiao","menu":[{"project_id":"294279","parent_id":"3664855","target_id":"3664936","name":"\u83b7\u53d6\u5f53\u524d\u5750\u5e2d\u6240\u5728\u961f\u5217\u6392\u961f\u6570\u636e","method":"POST","mark":"developing","target_type":"api","url":"https:\/\/cc.bjrzgt.tech\/api\/agentuser\/service\/quene\/index","pinyin":"huoqudangqianzuoxisuozaiduiliepaiduishuju","menu":[]}]}];
+        let _l66963878 = {"3664796":{"project_id":"294279","parent_id":"3664789","target_id":"3664796","name":"\u767b\u5f55","method":"POST","mark":"complated","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:03:55","sort":"0","request":{"target_id":3664796,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":""},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[{"is_checked":1,"type":"Text","key":"username","value":"qwh001","not_null":1,"field_type":"","description":"\u7528\u6237\u540d"},{"is_checked":1,"type":"Text","key":"password","value":"141421t","not_null":1,"field_type":"","description":"\u5bc6\u7801"}],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/tokens\/apisoftphonelogin"},"response":{"success":{"raw":"{\r\n\t\"organ\": null,\r\n\t\"enablemwebrtc\": true,\r\n\t\"webrtc\": \"true\",\r\n\t\"turnserver\": \"\",\r\n\t\"webrtchost\": \"opensips.bjrzgt.tech\",\r\n\t\"antoanswer\": \"none\",\r\n\t\"hostid\": \"ff80808175d4e4180175d95441c600db\",\r\n\t\"webrtcring\": \"\u8bf7\u9009\u62e9\u64ad\u62a5\u5f55\u97f3\",\r\n\t\"enableinviteuri\": true,\r\n\t\"userid\": \"ce7796ee661c4bb8b864ad1d3844999d\",\r\n\t\"turncredential\": \"\",\r\n\t\"password\": \"123456789\",\r\n\t\"enablemedia\": \"false\",\r\n\t\"opensipsport\": \"8.129.10.213\",\r\n\t\"turnusername\": \"\",\r\n\t\"opensips\": true,\r\n\t\"enablestun\": false,\r\n\t\"id\": \"ff80808175d4e4180175d9ad4a53016c\",\r\n\t\"sipport\": 64888,\r\n\t\"extention\": \"1030\",\r\n\t\"enableturn\": false,\r\n\t\"domainname\": \"\",\r\n\t\"mediapath\": null,\r\n\t\"opensipsurl\": \"123.56.22.83:50600\",\r\n\t\"opensipsdomain\": false,\r\n\t\"token\": \"a633fb8734bd0449ebee41147b69e220\", \/\/\u79d8\u94a5\uff0c\u7528\u4e8e\u540e\u7eed\u670d\u52a1\u8eab\u4efd\u9a8c\u8bc1\r\n\t\"previewring\": \"\u8bf7\u9009\u62e9\u64ad\u62a5\u5f55\u97f3\",\r\n\t\"orgi\": \"ukewo\",\r\n\t\"enableice\": false,\r\n\t\"enablerouteuri\": true,\r\n\t\"opensipsparam\": \"forked_dial=true\",\r\n\t\"turntransport\": \"udp\",\r\n\t\"webrtcport\": \"7443\",\r\n\t\"turnserverport\": \"\",\r\n\t\"webrtcssl\": \"true\"\r\n}","parameter":[]}}},"3664884":{"project_id":"294279","parent_id":"3664837","target_id":"3664884","name":"\u5916\u547c\u63a5\u53e3","method":"POST","mark":"developing","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:12:02","sort":"0","request":{"target_id":3664884,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":"a633fb8734bd0449ebee41147b69e220"},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[{"is_checked":1,"type":"Text","key":"sipname","value":"xianlu18","not_null":1,"field_type":"","description":"SIP\u7f51\u5173"},{"is_checked":1,"type":"Text","key":"t","value":"line","not_null":1,"field_type":"","description":"\u5916\u62e8\u7c7b\u578b"},{"is_checked":1,"type":"Text","key":"dial_number","value":"13477808291","not_null":1,"field_type":"","description":"\u5916\u62e8\u7535\u8bdd"},{"is_checked":1,"type":"Text","key":"extention","value":"1030","not_null":1,"field_type":"","description":"\u5206\u673a\u53f7"}],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/api\/callcenter\/invite"},"response":{"success":{"raw":"{\r\n\t\"status\": \"OK\",\r\n\t\"data\": \"5ec7cd0d-2ab8-4968-96ab-218fdbdf1281\", \/\/\u8fd4\u56de\u901a\u8bdd\u8bb0\u5f55id\r\n\t\"msg\": null\r\n}","parameter":[]}}},"3664899":{"project_id":"294279","parent_id":"3664842","target_id":"3664899","name":"\u67e5\u8be2\u6307\u5b9a\u547c\u53eb\u8bb0\u5f55","method":"POST","mark":"developing","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:09:06","sort":"0","request":{"target_id":3664899,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":"a633fb8734bd0449ebee41147b69e220"},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[{"is_checked":1,"type":"Text","key":"id","value":"5ec7cd0d-2ab8-4968-96ab-218fdbdf1281","not_null":1,"field_type":"","description":""}],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/api\/callcenterevent\/goalevent"},"response":{"success":{"raw":"{\r\n\t\"status\": \"OK\",\r\n\t\"data\": {\r\n\t\t\"id\": \"00058519-ff14-4448-802f-6cd747e0b775\",\r\n\t\t\"createtime\": 1609824113000,\r\n\t\t\"updatetime\": 1609824113000,\r\n\t\t\"inside\": false,\r\n\t\t\"code\": \"00058519-ff14-4448-802f-6cd747e0b775\",\r\n\t\t\"transcon\": false,\r\n\t\t\"transconid\": null,\r\n\t\t\"creater\": \"hangup\",\r\n\t\t\"source\": \"mod_sofia\",\r\n\t\t\"answer\": \"ringing\",\r\n\t\t\"callback\": false,\r\n\t\t\"ccquene\": null,\r\n\t\t\"calltype\": \"orgcallout\",\r\n\t\t\"voicecalled\": null,\r\n\t\t\"servicestatus\": \"hangup\",\r\n\t\t\"channelstatus\": \"DOWN\",\r\n\t\t\"inqueuetime\": null,\r\n\t\t\"outqueuetime\": null,\r\n\t\t\"queuetime\": 0,\r\n\t\t\"gateway\": null,\r\n\t\t\"gatewaycount\": false,\r\n\t\t\"ivr\": false,\r\n\t\t\"ivrentertime\": null,\r\n\t\t\"ivrleavetime\": null,\r\n\t\t\"ivrtime\": 0,\r\n\t\t\"autoanswer\": false,\r\n\t\t\"answertime\": null,\r\n\t\t\"ringduration\": 220,\r\n\t\t\"waittime\": 0,\r\n\t\t\"current\": false,\r\n\t\t\"forecast\": false,\r\n\t\t\"skill\": null,\r\n\t\t\"forecastid\": null,\r\n\t\t\"ai\": false,\r\n\t\t\"aieventid\": null,\r\n\t\t\"asrtimes\": 0,\r\n\t\t\"ttstimes\": 0,\r\n\t\t\"timeouttimes\": 0,\r\n\t\t\"errortimes\": 0,\r\n\t\t\"nmlinetimes\": 0,\r\n\t\t\"aitrans\": false,\r\n\t\t\"aiext\": null,\r\n\t\t\"timehour\": \"13:00~14:00\",\r\n\t\t\"timehourmin\": \"13:00~13:30\",\r\n\t\t\"priphone\": null,\r\n\t\t\"hidetype\": null,\r\n\t\t\"transfaild\": false,\r\n\t\t\"aitransqus\": null,\r\n\t\t\"aitranstime\": null,\r\n\t\t\"aitransduration\": 0,\r\n\t\t\"aitransans\": null,\r\n\t\t\"init\": false,\r\n\t\t\"coreuuid\": \"0481ad0d-9d0a-45d9-aa4c-c312cd179799\",\r\n\t\t\"caller\": \"1005\",\r\n\t\t\"calling\": \"1005\",\r\n\t\t\"called\": \"11842700441519470053\",\r\n\t\t\"discaller\": \"1005\",\r\n\t\t\"discalled\": \"11842700441519470053\",\r\n\t\t\"agentype\": null,\r\n\t\t\"quene\": null,\r\n\t\t\"ani\": \"11842700441519470053\",\r\n\t\t\"touser\": null,\r\n\t\t\"direction\": \"out\",\r\n\t\t\"calldir\": \"inbound\",\r\n\t\t\"otherdir\": null,\r\n\t\t\"waste\": false,\r\n\t\t\"apstatus\": false,\r\n\t\t\"otherlegdest\": null,\r\n\t\t\"time\": 1609824113220,\r\n\t\t\"localdatetime\": \"2021-01-05 13:21:53\",\r\n\t\t\"starttime\": 1609824113000,\r\n\t\t\"endtime\": 1609824113000,\r\n\t\t\"duration\": 0,\r\n\t\t\"membersessionid\": null,\r\n\t\t\"status\": null,\r\n\t\t\"state\": null,\r\n\t\t\"agent\": \"1005\",\r\n\t\t\"action\": null,\r\n\t\t\"name\": \"CHANNEL_CREATE\",\r\n\t\t\"host\": \"iZwz98qanynb5djjc1qq4yZ\",\r\n\t\t\"ipaddr\": \"172.28.22.143\",\r\n\t\t\"sipaddr\": \"123.56.22.83\",\r\n\t\t\"extention\": \"ff80808175d4e4180175d9ad49ea0153\",\r\n\t\t\"hostid\": \"ff80808175d4e4180175d95441c600db\",\r\n\t\t\"metaname\": null,\r\n\t\t\"taskid\": null,\r\n\t\t\"actid\": null,\r\n\t\t\"batid\": null,\r\n\t\t\"dataid\": null,\r\n\t\t\"nameid\": null,\r\n\t\t\"statustype\": \"inbound\",\r\n\t\t\"disphonenum\": null,\r\n\t\t\"distype\": null,\r\n\t\t\"busstype\": null,\r\n\t\t\"siptrunk\": null,\r\n\t\t\"prefix\": false,\r\n\t\t\"callstatus\": false,\r\n\t\t\"con_surnames\": null,\r\n\t\t\"con_intention\": null,\r\n\t\t\"con_quality\": null,\r\n\t\t\"con_qualitysubmit\": null,\r\n\t\t\"con_qualitypass\": null,\r\n\t\t\"qualitystatus\": null,\r\n\t\t\"qualitydisorgan\": null,\r\n\t\t\"qualitydisuser\": null,\r\n\t\t\"qualitydistime\": null,\r\n\t\t\"assuser\": null,\r\n\t\t\"templateid\": null,\r\n\t\t\"qualitydistype\": null,\r\n\t\t\"qualityorgan\": null,\r\n\t\t\"qualityuser\": null,\r\n\t\t\"qualityscore\": 0,\r\n\t\t\"qualitytime\": null,\r\n\t\t\"qualitytype\": null,\r\n\t\t\"qualityactid\": null,\r\n\t\t\"qualityfilterid\": null,\r\n\t\t\"qualityresult\": null,\r\n\t\t\"record\": false,\r\n\t\t\"startrecord\": null,\r\n\t\t\"endrecord\": null,\r\n\t\t\"recordtime\": 0,\r\n\t\t\"recordfile\": null,\r\n\t\t\"recordfilename\": null,\r\n\t\t\"rest\": false,\r\n\t\t\"contactsid\": null,\r\n\t\t\"bridgeid\": null,\r\n\t\t\"bridge\": false,\r\n\t\t\"misscall\": true,\r\n\t\t\"servicesummary\": false,\r\n\t\t\"serviceid\": null,\r\n\t\t\"calls\": 0,\r\n\t\t\"orgi\": \"ukewo\",\r\n\t\t\"country\": null,\r\n\t\t\"province\": null,\r\n\t\t\"city\": null,\r\n\t\t\"isp\": null,\r\n\t\t\"satisf\": false,\r\n\t\t\"satisfaction\": null,\r\n\t\t\"satisfdate\": null,\r\n\t\t\"datestr\": \"2021-01-05\",\r\n\t\t\"hourstr\": \"13\",\r\n\t\t\"userid\": null,\r\n\t\t\"username\": null,\r\n\t\t\"organ\": null,\r\n\t\t\"dtmf\": false,\r\n\t\t\"dtmfrec\": null,\r\n\t\t\"trans\": 0,\r\n\t\t\"transbegin\": null,\r\n\t\t\"transend\": null,\r\n\t\t\"transtime\": null,\r\n\t\t\"transtatus\": null,\r\n\t\t\"transcost\": 0,\r\n\t\t\"tranid\": null,\r\n\t\t\"qualitypass\": 2,\r\n\t\t\"workstatus\": null,\r\n\t\t\"hangupcase\": \"NORMAL_CLEARING\",\r\n\t\t\"hangupinitiator\": \"refuse\",\r\n\t\t\"ossstatus\": \"0\",\r\n\t\t\"itemid\": null,\r\n\t\t\"accountdes\": null,\r\n\t\t\"conference\": false,\r\n\t\t\"conferenceinitiator\": false,\r\n\t\t\"inconferenecetime\": null,\r\n\t\t\"conferenceduration\": 0,\r\n\t\t\"conferencenum\": null,\r\n\t\t\"conferenceid\": null,\r\n\t\t\"levelscore\": null,\r\n\t\t\"level\": null,\r\n\t\t\"focustimes\": null,\r\n\t\t\"processid\": null,\r\n\t\t\"igr\": false,\r\n\t\t\"igrstatus\": null,\r\n\t\t\"igrvoice\": null,\r\n\t\t\"igrvoicetime\": 0,\r\n\t\t\"igrage\": null,\r\n\t\t\"igrchild\": null,\r\n\t\t\"igrmiddle\": null,\r\n\t\t\"igrold\": null,\r\n\t\t\"igrgender\": null,\r\n\t\t\"igrfemale\": null,\r\n\t\t\"igrmale\": null,\r\n\t\t\"extdata1\": null,\r\n\t\t\"extdata2\": null,\r\n\t\t\"extdata3\": null,\r\n\t\t\"extdata4\": null,\r\n\t\t\"extdata5\": null,\r\n\t\t\"extdata6\": null,\r\n\t\t\"igrbegin\": null,\r\n\t\t\"igrend\": null,\r\n\t\t\"aicollect\": false,\r\n\t\t\"autoquality\": false,\r\n\t\t\"spotqc\": false,\r\n\t\t\"spotqctime\": null,\r\n\t\t\"spotqcsuccess\": false,\r\n\t\t\"appealqc\": false,\r\n\t\t\"arbitrateqc\": false,\r\n\t\t\"transresult\": null,\r\n\t\t\"templatever\": 0,\r\n\t\t\"extno\": null,\r\n\t\t\"callresult\": null\r\n\t},\r\n\t\"msg\": null\r\n}","parameter":[]}}},"3664909":{"project_id":"294279","parent_id":"3664842","target_id":"3664909","name":"\u67e5\u8be2\u6307\u5b9a\u65f6\u95f4\u6bb5\u547c\u53eb\u8bb0\u5f55","method":"POST","mark":"developing","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:09:15","sort":"0","request":{"target_id":3664909,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":"32e2ce03c5a02a1f0bd0f806a69eb2b6"},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[{"is_checked":1,"type":"Text","key":"starttime","value":"2021-01-05 13:21:01","not_null":1,"field_type":"","description":"\u5f00\u59cb\u65f6\u95f4"},{"is_checked":1,"type":"Text","key":"endtime","value":"2021-01-05 13:21:55","not_null":1,"field_type":"","description":"\u7ed3\u675f\u65f6\u95f4"}],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[{"is_checked":0,"type":"Text","key":"token","value":"a633fb8734bd0449ebee41147b69e220","not_null":1,"field_type":"","description":""}]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/api\/callcenterevent\/calllist"},"response":{"success":{"raw":"{\r\n\t\"status\": \"OK\",\r\n\t\"data\": {\r\n\t\t\"id\": \"00058519-ff14-4448-802f-6cd747e0b775\",\r\n\t\t\"createtime\": 1609824113000,\r\n\t\t\"updatetime\": 1609824113000,\r\n\t\t\"inside\": false,\r\n\t\t\"code\": \"00058519-ff14-4448-802f-6cd747e0b775\",\r\n\t\t\"transcon\": false,\r\n\t\t\"transconid\": null,\r\n\t\t\"creater\": \"hangup\",\r\n\t\t\"source\": \"mod_sofia\",\r\n\t\t\"answer\": \"ringing\",\r\n\t\t\"callback\": false,\r\n\t\t\"ccquene\": null,\r\n\t\t\"calltype\": \"orgcallout\",\r\n\t\t\"voicecalled\": null,\r\n\t\t\"servicestatus\": \"hangup\",\r\n\t\t\"channelstatus\": \"DOWN\",\r\n\t\t\"inqueuetime\": null,\r\n\t\t\"outqueuetime\": null,\r\n\t\t\"queuetime\": 0,\r\n\t\t\"gateway\": null,\r\n\t\t\"gatewaycount\": false,\r\n\t\t\"ivr\": false,\r\n\t\t\"ivrentertime\": null,\r\n\t\t\"ivrleavetime\": null,\r\n\t\t\"ivrtime\": 0,\r\n\t\t\"autoanswer\": false,\r\n\t\t\"answertime\": null,\r\n\t\t\"ringduration\": 220,\r\n\t\t\"waittime\": 0,\r\n\t\t\"current\": false,\r\n\t\t\"forecast\": false,\r\n\t\t\"skill\": null,\r\n\t\t\"forecastid\": null,\r\n\t\t\"ai\": false,\r\n\t\t\"aieventid\": null,\r\n\t\t\"asrtimes\": 0,\r\n\t\t\"ttstimes\": 0,\r\n\t\t\"timeouttimes\": 0,\r\n\t\t\"errortimes\": 0,\r\n\t\t\"nmlinetimes\": 0,\r\n\t\t\"aitrans\": false,\r\n\t\t\"aiext\": null,\r\n\t\t\"timehour\": \"13:00~14:00\",\r\n\t\t\"timehourmin\": \"13:00~13:30\",\r\n\t\t\"priphone\": null,\r\n\t\t\"hidetype\": null,\r\n\t\t\"transfaild\": false,\r\n\t\t\"aitransqus\": null,\r\n\t\t\"aitranstime\": null,\r\n\t\t\"aitransduration\": 0,\r\n\t\t\"aitransans\": null,\r\n\t\t\"init\": false,\r\n\t\t\"coreuuid\": \"0481ad0d-9d0a-45d9-aa4c-c312cd179799\",\r\n\t\t\"caller\": \"1005\",\r\n\t\t\"calling\": \"1005\",\r\n\t\t\"called\": \"11842700441519470053\",\r\n\t\t\"discaller\": \"1005\",\r\n\t\t\"discalled\": \"11842700441519470053\",\r\n\t\t\"agentype\": null,\r\n\t\t\"quene\": null,\r\n\t\t\"ani\": \"11842700441519470053\",\r\n\t\t\"touser\": null,\r\n\t\t\"direction\": \"out\",\r\n\t\t\"calldir\": \"inbound\",\r\n\t\t\"otherdir\": null,\r\n\t\t\"waste\": false,\r\n\t\t\"apstatus\": false,\r\n\t\t\"otherlegdest\": null,\r\n\t\t\"time\": 1609824113220,\r\n\t\t\"localdatetime\": \"2021-01-05 13:21:53\",\r\n\t\t\"starttime\": 1609824113000,\r\n\t\t\"endtime\": 1609824113000,\r\n\t\t\"duration\": 0,\r\n\t\t\"membersessionid\": null,\r\n\t\t\"status\": null,\r\n\t\t\"state\": null,\r\n\t\t\"agent\": \"1005\",\r\n\t\t\"action\": null,\r\n\t\t\"name\": \"CHANNEL_CREATE\",\r\n\t\t\"host\": \"iZwz98qanynb5djjc1qq4yZ\",\r\n\t\t\"ipaddr\": \"172.28.22.143\",\r\n\t\t\"sipaddr\": \"123.56.22.83\",\r\n\t\t\"extention\": \"ff80808175d4e4180175d9ad49ea0153\",\r\n\t\t\"hostid\": \"ff80808175d4e4180175d95441c600db\",\r\n\t\t\"metaname\": null,\r\n\t\t\"taskid\": null,\r\n\t\t\"actid\": null,\r\n\t\t\"batid\": null,\r\n\t\t\"dataid\": null,\r\n\t\t\"nameid\": null,\r\n\t\t\"statustype\": \"inbound\",\r\n\t\t\"disphonenum\": null,\r\n\t\t\"distype\": null,\r\n\t\t\"busstype\": null,\r\n\t\t\"siptrunk\": null,\r\n\t\t\"prefix\": false,\r\n\t\t\"callstatus\": false,\r\n\t\t\"con_surnames\": null,\r\n\t\t\"con_intention\": null,\r\n\t\t\"con_quality\": null,\r\n\t\t\"con_qualitysubmit\": null,\r\n\t\t\"con_qualitypass\": null,\r\n\t\t\"qualitystatus\": null,\r\n\t\t\"qualitydisorgan\": null,\r\n\t\t\"qualitydisuser\": null,\r\n\t\t\"qualitydistime\": null,\r\n\t\t\"assuser\": null,\r\n\t\t\"templateid\": null,\r\n\t\t\"qualitydistype\": null,\r\n\t\t\"qualityorgan\": null,\r\n\t\t\"qualityuser\": null,\r\n\t\t\"qualityscore\": 0,\r\n\t\t\"qualitytime\": null,\r\n\t\t\"qualitytype\": null,\r\n\t\t\"qualityactid\": null,\r\n\t\t\"qualityfilterid\": null,\r\n\t\t\"qualityresult\": null,\r\n\t\t\"record\": false,\r\n\t\t\"startrecord\": null,\r\n\t\t\"endrecord\": null,\r\n\t\t\"recordtime\": 0,\r\n\t\t\"recordfile\": null,\r\n\t\t\"recordfilename\": null,\r\n\t\t\"rest\": false,\r\n\t\t\"contactsid\": null,\r\n\t\t\"bridgeid\": null,\r\n\t\t\"bridge\": false,\r\n\t\t\"misscall\": true,\r\n\t\t\"servicesummary\": false,\r\n\t\t\"serviceid\": null,\r\n\t\t\"calls\": 0,\r\n\t\t\"orgi\": \"ukewo\",\r\n\t\t\"country\": null,\r\n\t\t\"province\": null,\r\n\t\t\"city\": null,\r\n\t\t\"isp\": null,\r\n\t\t\"satisf\": false,\r\n\t\t\"satisfaction\": null,\r\n\t\t\"satisfdate\": null,\r\n\t\t\"datestr\": \"2021-01-05\",\r\n\t\t\"hourstr\": \"13\",\r\n\t\t\"userid\": null,\r\n\t\t\"username\": null,\r\n\t\t\"organ\": null,\r\n\t\t\"dtmf\": false,\r\n\t\t\"dtmfrec\": null,\r\n\t\t\"trans\": 0,\r\n\t\t\"transbegin\": null,\r\n\t\t\"transend\": null,\r\n\t\t\"transtime\": null,\r\n\t\t\"transtatus\": null,\r\n\t\t\"transcost\": 0,\r\n\t\t\"tranid\": null,\r\n\t\t\"qualitypass\": 2,\r\n\t\t\"workstatus\": null,\r\n\t\t\"hangupcase\": \"NORMAL_CLEARING\",\r\n\t\t\"hangupinitiator\": \"refuse\",\r\n\t\t\"ossstatus\": \"0\",\r\n\t\t\"itemid\": null,\r\n\t\t\"accountdes\": null,\r\n\t\t\"conference\": false,\r\n\t\t\"conferenceinitiator\": false,\r\n\t\t\"inconferenecetime\": null,\r\n\t\t\"conferenceduration\": 0,\r\n\t\t\"conferencenum\": null,\r\n\t\t\"conferenceid\": null,\r\n\t\t\"levelscore\": null,\r\n\t\t\"level\": null,\r\n\t\t\"focustimes\": null,\r\n\t\t\"processid\": null,\r\n\t\t\"igr\": false,\r\n\t\t\"igrstatus\": null,\r\n\t\t\"igrvoice\": null,\r\n\t\t\"igrvoicetime\": 0,\r\n\t\t\"igrage\": null,\r\n\t\t\"igrchild\": null,\r\n\t\t\"igrmiddle\": null,\r\n\t\t\"igrold\": null,\r\n\t\t\"igrgender\": null,\r\n\t\t\"igrfemale\": null,\r\n\t\t\"igrmale\": null,\r\n\t\t\"extdata1\": null,\r\n\t\t\"extdata2\": null,\r\n\t\t\"extdata3\": null,\r\n\t\t\"extdata4\": null,\r\n\t\t\"extdata5\": null,\r\n\t\t\"extdata6\": null,\r\n\t\t\"igrbegin\": null,\r\n\t\t\"igrend\": null,\r\n\t\t\"aicollect\": false,\r\n\t\t\"autoquality\": false,\r\n\t\t\"spotqc\": false,\r\n\t\t\"spotqctime\": null,\r\n\t\t\"spotqcsuccess\": false,\r\n\t\t\"appealqc\": false,\r\n\t\t\"arbitrateqc\": false,\r\n\t\t\"transresult\": null,\r\n\t\t\"templatever\": 0,\r\n\t\t\"extno\": null,\r\n\t\t\"callresult\": null\r\n\t},\r\n\t\"msg\": null\r\n}","parameter":[]}}},"3664918":{"project_id":"294279","parent_id":"3664847","target_id":"3664918","name":"\u83b7\u53d6\u6240\u6709\u5750\u5e2d\u72b6\u6001\u4fe1\u606f","method":"POST","mark":"developing","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:09:38","sort":"0","request":{"target_id":3664918,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":"a633fb8734bd0449ebee41147b69e220"},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/getAllAgentStatus"},"response":{"success":{"raw":"{\r\n\t\"status\": \"OK\",\r\n\t\"data\": {\r\n\t\t\"id\": \"00058519-ff14-4448-802f-6cd747e0b775\",\r\n\t\t\"createtime\": 1609824113000,\r\n\t\t\"updatetime\": 1609824113000,\r\n\t\t\"inside\": false,\r\n\t\t\"code\": \"00058519-ff14-4448-802f-6cd747e0b775\",\r\n\t\t\"transcon\": false,\r\n\t\t\"transconid\": null,\r\n\t\t\"creater\": \"hangup\",\r\n\t\t\"source\": \"mod_sofia\",\r\n\t\t\"answer\": \"ringing\",\r\n\t\t\"callback\": false,\r\n\t\t\"ccquene\": null,\r\n\t\t\"calltype\": \"orgcallout\",\r\n\t\t\"voicecalled\": null,\r\n\t\t\"servicestatus\": \"hangup\",\r\n\t\t\"channelstatus\": \"DOWN\",\r\n\t\t\"inqueuetime\": null,\r\n\t\t\"outqueuetime\": null,\r\n\t\t\"queuetime\": 0,\r\n\t\t\"gateway\": null,\r\n\t\t\"gatewaycount\": false,\r\n\t\t\"ivr\": false,\r\n\t\t\"ivrentertime\": null,\r\n\t\t\"ivrleavetime\": null,\r\n\t\t\"ivrtime\": 0,\r\n\t\t\"autoanswer\": false,\r\n\t\t\"answertime\": null,\r\n\t\t\"ringduration\": 220,\r\n\t\t\"waittime\": 0,\r\n\t\t\"current\": false,\r\n\t\t\"forecast\": false,\r\n\t\t\"skill\": null,\r\n\t\t\"forecastid\": null,\r\n\t\t\"ai\": false,\r\n\t\t\"aieventid\": null,\r\n\t\t\"asrtimes\": 0,\r\n\t\t\"ttstimes\": 0,\r\n\t\t\"timeouttimes\": 0,\r\n\t\t\"errortimes\": 0,\r\n\t\t\"nmlinetimes\": 0,\r\n\t\t\"aitrans\": false,\r\n\t\t\"aiext\": null,\r\n\t\t\"timehour\": \"13:00~14:00\",\r\n\t\t\"timehourmin\": \"13:00~13:30\",\r\n\t\t\"priphone\": null,\r\n\t\t\"hidetype\": null,\r\n\t\t\"transfaild\": false,\r\n\t\t\"aitransqus\": null,\r\n\t\t\"aitranstime\": null,\r\n\t\t\"aitransduration\": 0,\r\n\t\t\"aitransans\": null,\r\n\t\t\"init\": false,\r\n\t\t\"coreuuid\": \"0481ad0d-9d0a-45d9-aa4c-c312cd179799\",\r\n\t\t\"caller\": \"1005\",\r\n\t\t\"calling\": \"1005\",\r\n\t\t\"called\": \"11842700441519470053\",\r\n\t\t\"discaller\": \"1005\",\r\n\t\t\"discalled\": \"11842700441519470053\",\r\n\t\t\"agentype\": null,\r\n\t\t\"quene\": null,\r\n\t\t\"ani\": \"11842700441519470053\",\r\n\t\t\"touser\": null,\r\n\t\t\"direction\": \"out\",\r\n\t\t\"calldir\": \"inbound\",\r\n\t\t\"otherdir\": null,\r\n\t\t\"waste\": false,\r\n\t\t\"apstatus\": false,\r\n\t\t\"otherlegdest\": null,\r\n\t\t\"time\": 1609824113220,\r\n\t\t\"localdatetime\": \"2021-01-05 13:21:53\",\r\n\t\t\"starttime\": 1609824113000,\r\n\t\t\"endtime\": 1609824113000,\r\n\t\t\"duration\": 0,\r\n\t\t\"membersessionid\": null,\r\n\t\t\"status\": null,\r\n\t\t\"state\": null,\r\n\t\t\"agent\": \"1005\",\r\n\t\t\"action\": null,\r\n\t\t\"name\": \"CHANNEL_CREATE\",\r\n\t\t\"host\": \"iZwz98qanynb5djjc1qq4yZ\",\r\n\t\t\"ipaddr\": \"172.28.22.143\",\r\n\t\t\"sipaddr\": \"123.56.22.83\",\r\n\t\t\"extention\": \"ff80808175d4e4180175d9ad49ea0153\",\r\n\t\t\"hostid\": \"ff80808175d4e4180175d95441c600db\",\r\n\t\t\"metaname\": null,\r\n\t\t\"taskid\": null,\r\n\t\t\"actid\": null,\r\n\t\t\"batid\": null,\r\n\t\t\"dataid\": null,\r\n\t\t\"nameid\": null,\r\n\t\t\"statustype\": \"inbound\",\r\n\t\t\"disphonenum\": null,\r\n\t\t\"distype\": null,\r\n\t\t\"busstype\": null,\r\n\t\t\"siptrunk\": null,\r\n\t\t\"prefix\": false,\r\n\t\t\"callstatus\": false,\r\n\t\t\"con_surnames\": null,\r\n\t\t\"con_intention\": null,\r\n\t\t\"con_quality\": null,\r\n\t\t\"con_qualitysubmit\": null,\r\n\t\t\"con_qualitypass\": null,\r\n\t\t\"qualitystatus\": null,\r\n\t\t\"qualitydisorgan\": null,\r\n\t\t\"qualitydisuser\": null,\r\n\t\t\"qualitydistime\": null,\r\n\t\t\"assuser\": null,\r\n\t\t\"templateid\": null,\r\n\t\t\"qualitydistype\": null,\r\n\t\t\"qualityorgan\": null,\r\n\t\t\"qualityuser\": null,\r\n\t\t\"qualityscore\": 0,\r\n\t\t\"qualitytime\": null,\r\n\t\t\"qualitytype\": null,\r\n\t\t\"qualityactid\": null,\r\n\t\t\"qualityfilterid\": null,\r\n\t\t\"qualityresult\": null,\r\n\t\t\"record\": false,\r\n\t\t\"startrecord\": null,\r\n\t\t\"endrecord\": null,\r\n\t\t\"recordtime\": 0,\r\n\t\t\"recordfile\": null,\r\n\t\t\"recordfilename\": null,\r\n\t\t\"rest\": false,\r\n\t\t\"contactsid\": null,\r\n\t\t\"bridgeid\": null,\r\n\t\t\"bridge\": false,\r\n\t\t\"misscall\": true,\r\n\t\t\"servicesummary\": false,\r\n\t\t\"serviceid\": null,\r\n\t\t\"calls\": 0,\r\n\t\t\"orgi\": \"ukewo\",\r\n\t\t\"country\": null,\r\n\t\t\"province\": null,\r\n\t\t\"city\": null,\r\n\t\t\"isp\": null,\r\n\t\t\"satisf\": false,\r\n\t\t\"satisfaction\": null,\r\n\t\t\"satisfdate\": null,\r\n\t\t\"datestr\": \"2021-01-05\",\r\n\t\t\"hourstr\": \"13\",\r\n\t\t\"userid\": null,\r\n\t\t\"username\": null,\r\n\t\t\"organ\": null,\r\n\t\t\"dtmf\": false,\r\n\t\t\"dtmfrec\": null,\r\n\t\t\"trans\": 0,\r\n\t\t\"transbegin\": null,\r\n\t\t\"transend\": null,\r\n\t\t\"transtime\": null,\r\n\t\t\"transtatus\": null,\r\n\t\t\"transcost\": 0,\r\n\t\t\"tranid\": null,\r\n\t\t\"qualitypass\": 2,\r\n\t\t\"workstatus\": null,\r\n\t\t\"hangupcase\": \"NORMAL_CLEARING\",\r\n\t\t\"hangupinitiator\": \"refuse\",\r\n\t\t\"ossstatus\": \"0\",\r\n\t\t\"itemid\": null,\r\n\t\t\"accountdes\": null,\r\n\t\t\"conference\": false,\r\n\t\t\"conferenceinitiator\": false,\r\n\t\t\"inconferenecetime\": null,\r\n\t\t\"conferenceduration\": 0,\r\n\t\t\"conferencenum\": null,\r\n\t\t\"conferenceid\": null,\r\n\t\t\"levelscore\": null,\r\n\t\t\"level\": null,\r\n\t\t\"focustimes\": null,\r\n\t\t\"processid\": null,\r\n\t\t\"igr\": false,\r\n\t\t\"igrstatus\": null,\r\n\t\t\"igrvoice\": null,\r\n\t\t\"igrvoicetime\": 0,\r\n\t\t\"igrage\": null,\r\n\t\t\"igrchild\": null,\r\n\t\t\"igrmiddle\": null,\r\n\t\t\"igrold\": null,\r\n\t\t\"igrgender\": null,\r\n\t\t\"igrfemale\": null,\r\n\t\t\"igrmale\": null,\r\n\t\t\"extdata1\": null,\r\n\t\t\"extdata2\": null,\r\n\t\t\"extdata3\": null,\r\n\t\t\"extdata4\": null,\r\n\t\t\"extdata5\": null,\r\n\t\t\"extdata6\": null,\r\n\t\t\"igrbegin\": null,\r\n\t\t\"igrend\": null,\r\n\t\t\"aicollect\": false,\r\n\t\t\"autoquality\": false,\r\n\t\t\"spotqc\": false,\r\n\t\t\"spotqctime\": null,\r\n\t\t\"spotqcsuccess\": false,\r\n\t\t\"appealqc\": false,\r\n\t\t\"arbitrateqc\": false,\r\n\t\t\"transresult\": null,\r\n\t\t\"templatever\": 0,\r\n\t\t\"extno\": null,\r\n\t\t\"callresult\": null\r\n\t},\r\n\t\"msg\": null\r\n}","parameter":[]}}},"3664923":{"project_id":"294279","parent_id":"3664847","target_id":"3664923","name":"\u83b7\u53d6\u6307\u5b9a\u5750\u5e2d\u72b6\u6001\u4fe1\u606f","method":"POST","mark":"developing","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:09:44","sort":"0","request":{"target_id":3664923,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":"a633fb8734bd0449ebee41147b69e220"},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[{"is_checked":1,"type":"Text","key":"id","value":"ce7796ee661c4bb8b864ad1d3844999d","not_null":1,"field_type":"","description":""}],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/getagentstatusbyid"},"response":{"success":{"raw":"{\r\n\t\"status\": \"OK\",\r\n\t\"data\": {\r\n\t\t\"id\": \"882613fcd3cb495f8fa15ef4d8d3d2ab\",\r\n\t\t\"agentno\": \"882613fcd3cb495f8fa15ef4d8d3d2ab\",\r\n\t\t\"logindate\": 1610684130000,\r\n\t\t\"status\": \"notready\",\r\n\t\t\"orgi\": \"ukewo\",\r\n\t\t\"agentserviceid\": null,\r\n\t\t\"serusernum\": 10,\r\n\t\t\"skill\": null,\r\n\t\t\"busy\": false,\r\n\t\t\"createtime\": 1610684130000,\r\n\t\t\"skillname\": null,\r\n\t\t\"users\": 0,\r\n\t\t\"maxusers\": 0,\r\n\t\t\"initmaxusers\": 10,\r\n\t\t\"pulluser\": false,\r\n\t\t\"username\": null,\r\n\t\t\"name\": null,\r\n\t\t\"updatetime\": 1610684130000,\r\n\t\t\"workstatus\": null,\r\n\t\t\"userid\": \"882613fcd3cb495f8fa15ef4d8d3d2ab\"\r\n\t},\r\n\t\"msg\": null\r\n}","parameter":[]}}},"3664936":{"project_id":"294279","parent_id":"3664855","target_id":"3664936","name":"\u83b7\u53d6\u5f53\u524d\u5750\u5e2d\u6240\u5728\u961f\u5217\u6392\u961f\u6570\u636e","method":"POST","mark":"developing","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:09:57","sort":"0","request":{"target_id":3664936,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":"32e2ce03c5a02a1f0bd0f806a69eb2b6"},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/api\/agentuser\/service\/quene\/index"},"response":{"success":{"raw":"{\r\n\t\"status\": \"OK\",\r\n\t\"data\": {\r\n\t\t\"topicList\": [],\r\n\t\t\"totalPages\": 0,\r\n\t\t\"totalElements\": 0,\r\n\t\t\"size\": 20,\r\n\t\t\"numberOfElements\": 0,\r\n\t\t\"number\": 0,\r\n\t\t\"notprocess\": 0\r\n\t},\r\n\t\"msg\": null\r\n}","parameter":[]}}},"3665060":{"project_id":"294279","parent_id":"3664817","target_id":"3665060","name":"\u5728\u7ebf\u5ba2\u670d\u72b6\u6001\u5207\u6362","method":"POST","mark":"developing","target_type":"api","update_day":"1610899200","update_dtime":"2021-01-18 16:11:02","sort":"0","request":{"target_id":3665060,"auth":{"type":"bearer","kv":{"key":"","value":""},"bearer":{"key":"a633fb8734bd0449ebee41147b69e220"},"basic":{"username":"","password":""}},"body":{"mode":"form-data","parameter":[{"is_checked":1,"type":"Text","key":"status","value":"ready","not_null":1,"field_type":"","description":"busy\uff1a\u5fd9\u788c\r\nnotready\uff1a\u672a\u5c31\u7eea\r\nready\uff1a\u5c31\u7eea"}],"raw":"","raw_para":[]},"description":"","event":{"pre_script":"","test":""},"header":{"parameter":[{"is_checked":1,"type":"Text","key":"token","value":"a633fb8734bd0449ebee41147b69e220","not_null":1,"field_type":"","description":""}]},"query":{"parameter":[]},"resful":{"parameter":[]},"url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/status"},"response":{"success":{"raw":"{\r\n\t\"status\": \"OK\",\r\n\t\"data\": \"ready\",\r\n\t\"msg\": null\r\n}","parameter":[]}}}};
+        let _global_paras = {"query":[],"header":[],"body":[]};
+        let _search_apis_list = [{"target_id":"3664796","target_type":"api","method":"POST","name":"\u767b\u5f55","url":"https:\/\/cc.bjrzgt.tech\/tokens\/apisoftphonelogin","pinyin":"denglu"},{"target_id":"3664884","target_type":"api","method":"POST","name":"\u5916\u547c\u63a5\u53e3","url":"https:\/\/cc.bjrzgt.tech\/api\/callcenter\/invite","pinyin":"waihujiekou"},{"target_id":"3664899","target_type":"api","method":"POST","name":"\u67e5\u8be2\u6307\u5b9a\u547c\u53eb\u8bb0\u5f55","url":"https:\/\/cc.bjrzgt.tech\/api\/callcenterevent\/goalevent","pinyin":"chaxunzhidinghujiaojilu"},{"target_id":"3664909","target_type":"api","method":"POST","name":"\u67e5\u8be2\u6307\u5b9a\u65f6\u95f4\u6bb5\u547c\u53eb\u8bb0\u5f55","url":"https:\/\/cc.bjrzgt.tech\/api\/callcenterevent\/calllist","pinyin":"chaxunzhidingshijianduanhujiaojilu"},{"target_id":"3664918","target_type":"api","method":"POST","name":"\u83b7\u53d6\u6240\u6709\u5750\u5e2d\u72b6\u6001\u4fe1\u606f","url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/getAllAgentStatus","pinyin":"huoqusuoyouzuoxizhuangtaixinxi"},{"target_id":"3664923","target_type":"api","method":"POST","name":"\u83b7\u53d6\u6307\u5b9a\u5750\u5e2d\u72b6\u6001\u4fe1\u606f","url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/getagentstatusbyid","pinyin":"huoquzhidingzuoxizhuangtaixinxi"},{"target_id":"3664936","target_type":"api","method":"POST","name":"\u83b7\u53d6\u5f53\u524d\u5750\u5e2d\u6240\u5728\u961f\u5217\u6392\u961f\u6570\u636e","url":"https:\/\/cc.bjrzgt.tech\/api\/agentuser\/service\/quene\/index","pinyin":"huoqudangqianzuoxisuozaiduiliepaiduishuju"},{"target_id":"3665060","target_type":"api","method":"POST","name":"\u5728\u7ebf\u5ba2\u670d\u72b6\u6001\u5207\u6362","url":"https:\/\/cc.bjrzgt.tech\/api\/agent\/status","pinyin":"zaixiankefuzhuangtaiqiehuan"}];
+        // console.log(_menu, _search_apis_list);
+        apt.init(_menu, _l66963878, _global_paras, _search_apis_list);
+        let _project_envs = [];
+        let _html = template('template-apt-envs-desc-tpl', {'list' : _project_envs});
+        $('.apt-envs-desc').html(_html);
+
+        // 11.11代码
+        $('.apt1111 .close-btn').on('click', function(){
+        	$('.apt1111').hide();
+        });
+    })
+</script>
+<!-- 百度统计 -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?a046ce178828e393614822a297b8d296";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!-- 360统计 -->
+<script>
+    (function(){
+        var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?07ef9520f5511356899444a093d03ded":"https://jspassport.ssl.qhimg.com/11.0.1.js?07ef9520f5511356899444a093d03ded";
+        document.write('<script src="' + src + '" id="sozz"><\/script>');
+    })();
+</script>
+<span style="display: none;"><script type="text/javascript" src="https://s23.cnzz.com/z_stat.php?id=1276797738&web_id=1276797738"></script></span>
+</body>
+</html>
